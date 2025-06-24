@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from PIL import Image
 import tkinter.messagebox as messagebox
-from dashboard_page import DashboardApp
+
 from cred import usuarios
 
 # Configuración visual
@@ -46,7 +46,7 @@ class LoginApp(ctk.CTk):
             img_label.pack(expand=True, fill="both")  # Ajusta el relleno vertical según sea necesario
         except Exception as e:
             fallback = ctk.CTkLabel(left_frame, text="(Imagen no encontrada)", font=("Arial", 16))
-            fallback.pack(expand=True)    
+            fallback.pack(expand=True)
 
     def crear_panel_derecho(self):
         right_frame = ctk.CTkFrame(self, corner_radius=10)
@@ -75,8 +75,8 @@ class LoginApp(ctk.CTk):
         password = self.password_entry.get()
         if user in usuarios and usuarios[user] == password:
             self.destroy()
-            dashboard = DashboardApp()
-            dashboard.mainloop() 
+            dashboard = __import__("dashboard_page").DashboardApp
+            dashboard().mainloop()
         else:
              messagebox.showerror("Error", "Usuario o contraseña incorrectos")
 
