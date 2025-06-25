@@ -34,6 +34,7 @@ class LoginApp(ctk.CTk):
 
         self.crear_panel_izquierdo(window_width, window_height)
         self.crear_panel_derecho()
+        self.bind("<Return>", lambda event: self.login())
 
     def crear_panel_izquierdo(self, width, height):
           # Frame izquierdo
